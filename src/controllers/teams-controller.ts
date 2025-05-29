@@ -14,6 +14,12 @@ class TeamsController {
 
     const team = await prisma.team.create({ data: { name, description } });
 
+    const teamAlreadyExists = await prisma.team.findFirst({ where: { name } });
+
+    if(teamAlreadyExists) {
+      throw new AppError("team with same name already exists", 400);
+    }
+
     return response.status(201).json(team);
   }
 

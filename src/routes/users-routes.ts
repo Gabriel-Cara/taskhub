@@ -7,6 +7,6 @@ const usersController = new UsersController();
 
 usersRoutes.get("/", usersController.index);
 usersRoutes.post("/", usersController.create);
-usersRoutes.patch("/:id", usersController.update);
+usersRoutes.patch("/:id/update", usersController.update);
 
 export { usersRoutes };
